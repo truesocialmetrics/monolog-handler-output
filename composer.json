@@ -1,0 +1,20 @@
+{
+    "name": "necromant2005/tt-log-processor",
+    "type": "library",
+    "description": "Monolog processors",
+    "keywords": ["monolog", "processor", "content"],
+    "homepage": "https://github.com/necromant2005/tt-log-processor",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rostislav Mykhajliw",
+            "email": "necromant2005@gmail.com",
+            "homepage": "https://github.com/necromant2005",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "monolog/monolog": "*"
+    }
+}
