@@ -2,7 +2,7 @@
     "name": "necromant2005/tt-log-processor",
     "type": "library",
     "description": "Monolog processors",
-    "keywords": ["monolog", "processor", "content"],
+    "keywords": ["monolog", "processor", "content", "zf2"],
     "homepage": "https://github.com/necromant2005/tt-log-processor",
     "license": "MIT",
     "authors": [
