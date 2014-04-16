@@ -13,26 +13,10 @@ class ConsoleOutputTest extends PHPUnit_Framework_TestCase
         ob_start();
         //$handler->write(array('email' => 'x@x.com'));
         $method->invokeArgs($handler, array('record' => array(
-            'datetime' => '2014-01-01 11:11:11',
-            'message' => 'my test message',
-            'level' => 0,
-            'level_name' => 'DEBUG',
-            'context' => array(
-                'user' => 'x@x.com',
-            ),
-            'extra' => array(
-                'call' => '/api'
-            ),
+            'formatted' => '[2014-04-16 07:35:19] default.DEBUG: 2014-03-31 [] []',
         )));
         $content = ob_get_contents();
         ob_end_clean();
-        $this->assertEquals('2014-01-01 11:11:11 => DEBUG => my test message' . PHP_EOL 
-            . 'array (' . PHP_EOL . 
-                '  \'user\' => \'x@x.com\',' . PHP_EOL
-            . ')' . PHP_EOL
-            . 'array (' . PHP_EOL
-            . '  \'call\' => \'/api\',' . PHP_EOL
-            . ')' . PHP_EOL
-            , $content);
+        $this->assertEquals('[2014-04-16 07:35:19] default.DEBUG: 2014-03-31 [] []', $content);
     }
 }
