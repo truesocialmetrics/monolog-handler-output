@@ -105,4 +105,9 @@ class ExceptionCatch implements HandlerInterface
     {
         return $this->getHandler()->getFormatter();
     }
+
+    public function __call($method, $arguments)
+    {
+        return call_user_func_array(array($this->getHandler(), $method), $arguments);
+    }
 }

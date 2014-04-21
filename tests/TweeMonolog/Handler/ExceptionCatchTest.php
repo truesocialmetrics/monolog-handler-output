@@ -59,4 +59,16 @@ class ExceptionCatchTest extends PHPUnit_Framework_TestCase
         $handler->setFormatter($formatter);
         $this->assertEquals($formatter, $handler->getFormatter());
     }
+
+    public function testCall()
+    {
+        $null = new TestHandler(Logger::CRITICAL);
+        $handler = new ExceptionCatch($null);
+        $handler->handleBatch(array(
+            array('level' => Logger::DEBUG, 'extra' => array(), 'message' => ''),
+            array('level' => Logger::CRITICAL, 'extra' => array(), 'message' => ''),
+        ));
+        $this->assertFalse($handler->hasDebug(array('message' => '')));
+        $this->assertTrue($handler->hasCritical(array('message' => '')));
+    }
 }
