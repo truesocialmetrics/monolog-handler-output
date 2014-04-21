@@ -32,7 +32,9 @@ class ExceptionCatch implements HandlerInterface
      */
     public function isHandling(array $record)
     {
-        return $this->getHandler()->isHandling($record);
+        try {
+            return $this->getHandler()->isHandling($record);
+        } catch (\Exception $e) {}
     }
 
     /**
@@ -51,7 +53,9 @@ class ExceptionCatch implements HandlerInterface
      */
     public function handle(array $record)
     {
-        return $this->getHandler()->handle($record);
+        try {
+            return $this->getHandler()->handle($record);
+        } catch (\Exception $e) {}
     }
 
     /**
@@ -61,7 +65,9 @@ class ExceptionCatch implements HandlerInterface
      */
     public function handleBatch(array $records)
     {
-        return $this->getHandler()->handleBatch($records);
+        try {
+            return $this->getHandler()->handleBatch($records);
+        } catch (\Exception $e) {}
     }
 
     /**
@@ -72,7 +78,9 @@ class ExceptionCatch implements HandlerInterface
      */
     public function pushProcessor($callback)
     {
-        return $this->getHandler()->pushProcessor($callback);
+        try {
+            return $this->getHandler()->pushProcessor($callback);
+        } catch (\Exception $e) {}
     }
 
     /**
@@ -82,7 +90,9 @@ class ExceptionCatch implements HandlerInterface
      */
     public function popProcessor()
     {
-        return $this->getHandler()->popProcessor();
+        try {
+            return $this->getHandler()->popProcessor();
+        } catch (\Exception $e) {}
     }
 
     /**
@@ -93,7 +103,9 @@ class ExceptionCatch implements HandlerInterface
      */
     public function setFormatter(FormatterInterface $formatter)
     {
-        return $this->getHandler()->setFormatter($formatter);
+        try {
+            return $this->getHandler()->setFormatter($formatter);
+        } catch (\Exception $e) {}
     }
 
     /**
@@ -103,11 +115,15 @@ class ExceptionCatch implements HandlerInterface
      */
     public function getFormatter()
     {
-        return $this->getHandler()->getFormatter();
+        try {
+            return $this->getHandler()->getFormatter();
+        } catch (\Exception $e) {}
     }
 
     public function __call($method, $arguments)
     {
-        return call_user_func_array(array($this->getHandler(), $method), $arguments);
+        try {
+            return call_user_func_array(array($this->getHandler(), $method), $arguments);
+        } catch (\Exception $e) {}
     }
 }
