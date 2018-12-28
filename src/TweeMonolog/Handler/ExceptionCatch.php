@@ -34,7 +34,9 @@ class ExceptionCatch implements HandlerInterface
     {
         try {
             return $this->getHandler()->isHandling($record);
-        } catch (\Exception $e) {}
+        } catch (\Exception $e) {
+            return false;
+        }
     }
 
     /**
@@ -55,7 +57,9 @@ class ExceptionCatch implements HandlerInterface
     {
         try {
             return $this->getHandler()->handle($record);
-        } catch (\Exception $e) {}
+        } catch (\Exception $e) {
+            return false;
+        }
     }
 
     /**
@@ -67,7 +71,9 @@ class ExceptionCatch implements HandlerInterface
     {
         try {
             return $this->getHandler()->handleBatch($records);
-        } catch (\Exception $e) {}
+        } catch (\Exception $e) {
+            return false;
+        }
     }
 
     /**
@@ -80,7 +86,9 @@ class ExceptionCatch implements HandlerInterface
     {
         try {
             return $this->getHandler()->pushProcessor($callback);
-        } catch (\Exception $e) {}
+        } catch (\Exception $e) {
+            return $this;
+        }
     }
 
     /**
@@ -92,7 +100,9 @@ class ExceptionCatch implements HandlerInterface
     {
         try {
             return $this->getHandler()->popProcessor();
-        } catch (\Exception $e) {}
+        } catch (\Exception $e) {
+            return null;
+        }
     }
 
     /**
@@ -105,7 +115,9 @@ class ExceptionCatch implements HandlerInterface
     {
         try {
             return $this->getHandler()->setFormatter($formatter);
-        } catch (\Exception $e) {}
+        } catch (\Exception $e) {
+            return $this;
+        }
     }
 
     /**
@@ -117,7 +129,9 @@ class ExceptionCatch implements HandlerInterface
     {
         try {
             return $this->getHandler()->getFormatter();
-        } catch (\Exception $e) {}
+        } catch (\Exception $e) {
+            return null;
+        }
     }
 
     public function __call($method, $arguments)

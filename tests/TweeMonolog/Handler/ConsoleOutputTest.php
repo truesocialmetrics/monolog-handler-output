@@ -1,9 +1,9 @@
 <?php
 namespace TweeMonolog\Handler;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 use ReflectionMethod;
 
-class ConsoleOutputTest extends PHPUnit_Framework_TestCase
+class ConsoleOutputTest extends TestCase
 {
     public function test()
     {

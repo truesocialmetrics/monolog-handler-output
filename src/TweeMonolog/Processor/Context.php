@@ -29,10 +29,14 @@ class Context
      */
     public function __invoke(array $record)
     {
+        if (!array_key_exists('extra', $record)) {
+            $record['extra'] = [];
+        }
         $record['extra'] = array_merge(
             $record['extra'],
             $this->context
         );
+
         return $record;
     }
 }

@@ -1,15 +1,15 @@
 <?php
 namespace TweeMonolog\Handler;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 use Monolog\Handler\NullHandler;
 use Monolog\Handler\TestHandler;
 use Monolog\Processor\MemoryUsageProcessor;
 use Monolog\Formatter\JsonFormatter;
 use Monolog\Logger;
 
-class ExceptionCatchTest extends PHPUnit_Framework_TestCase
+class ExceptionCatchTest extends TestCase
 {
-    public function __construct()
+    public function testConstruct()
     {
         $null = new NullHandler();
         $handler = new ExceptionCatch($null);
@@ -20,7 +20,7 @@ class ExceptionCatchTest extends PHPUnit_Framework_TestCase
     {
         $null = new NullHandler(Logger::CRITICAL);
         $handler = new ExceptionCatch($null);
-        $this->assertFalse($handler->isHandling(array('level' => Logger::DEBUG)));
+        $this->assertFalse($handler->isHandling(['level' => Logger::DEBUG]));
         $this->assertTrue($handler->isHandling(array('level' => Logger::CRITICAL)));
     }
 
@@ -37,8 +37,8 @@ class ExceptionCatchTest extends PHPUnit_Framework_TestCase
         $null = new TestHandler(Logger::CRITICAL);
         $handler = new ExceptionCatch($null);
         $handler->handleBatch(array(
-            array('level' => Logger::DEBUG, 'extra' => array(), 'message' => ''),
-            array('level' => Logger::CRITICAL, 'extra' => array(), 'message' => ''),
+            array('level' => Logger::DEBUG, 'extra' => array(), 'message' => '', 'context' => []),
+            array('level' => Logger::CRITICAL, 'extra' => array(), 'message' => '', 'context' => []),
         ));
         $this->assertFalse($null->hasDebug(array('message' => '')));
         $this->assertTrue($null->hasCritical(array('message' => '')));
@@ -65,8 +65,8 @@ class ExceptionCatchTest extends PHPUnit_Framework_TestCase
         $null = new TestHandler(Logger::CRITICAL);
         $handler = new ExceptionCatch($null);
         $handler->handleBatch(array(
-            array('level' => Logger::DEBUG, 'extra' => array(), 'message' => ''),
-            array('level' => Logger::CRITICAL, 'extra' => array(), 'message' => ''),
+            array('level' => Logger::DEBUG, 'extra' => array(), 'message' => '', 'context' => []),
+            array('level' => Logger::CRITICAL, 'extra' => array(), 'message' => '', 'context' => []),
         ));
         $this->assertFalse($handler->hasDebug(array('message' => '')));
         $this->assertTrue($handler->hasCritical(array('message' => '')));

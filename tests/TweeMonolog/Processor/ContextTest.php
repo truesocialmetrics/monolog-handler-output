@@ -1,8 +1,8 @@
 <?php
 namespace TweeMonolog\Processor;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
-class ContextTest extends PHPUnit_Framework_TestCase
+class ContextTest extends TestCase
 {
     public function test()
     {
@@ -11,7 +11,7 @@ class ContextTest extends PHPUnit_Framework_TestCase
         ));
         $response = $context->__invoke(array('message' => 'abc', 'extra' => array()));
         $this->assertEquals(array(
-            'message' => 'abc', 
+            'message' => 'abc',
             'extra' => array(
                 'user' => 'x@x.com'
             )

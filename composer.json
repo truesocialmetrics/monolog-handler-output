@@ -1,9 +1,9 @@
 {
-    "name": "necromant2005/tt-log-processor",
+    "name": "truesocialmetrics/monolog-handler-output",
     "type": "library",
     "description": "Monolog processors",
-    "keywords": ["monolog", "processor", "content", "zf2"],
-    "homepage": "https://github.com/necromant2005/tt-log-processor",
+    "keywords": ["monolog", "processor", "content", "zf3"],
+    "homepage": "https://github.com/truesocialmetrics/monolog-handler-output",
     "license": "MIT",
     "authors": [
         {
@@ -14,12 +14,12 @@
         }
     ],
     "require": {
-        "php": ">=5.3.0",
+        "php": ">=7.1",
         "monolog/monolog": "*"
     },
     "autoload": {
-        "psr-0": {
-            "TweeMonolog": "src/"
+        "psr-4": {
+            "TweeMonolog\\": "src/TweeMonolog"
         }
     }
 }
