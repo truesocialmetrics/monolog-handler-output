@@ -4,7 +4,7 @@ use Monolog\Handler\AbstractProcessingHandler;
 
 class ConsoleOutput extends AbstractProcessingHandler
 {
-    protected function write(array $record)
+    protected function write(array $record): void
     {
         echo $record['formatted'];
     }

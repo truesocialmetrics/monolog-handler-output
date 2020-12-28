@@ -30,7 +30,7 @@ class ExceptionCatch implements HandlerInterface
      *
      * @return Boolean
      */
-    public function isHandling(array $record)
+    public function isHandling(array $record): bool
     {
         try {
             return $this->getHandler()->isHandling($record);
@@ -53,7 +53,7 @@ class ExceptionCatch implements HandlerInterface
      * @return Boolean true means that this handler handled the record, and that bubbling is not permitted.
      *                        false means the record was either not processed or that this handler allows bubbling.
      */
-    public function handle(array $record)
+    public function handle(array $record): bool
     {
         try {
             return $this->getHandler()->handle($record);
@@ -67,12 +67,12 @@ class ExceptionCatch implements HandlerInterface
      *
      * @param array $records The records to handle (an array of record arrays)
      */
-    public function handleBatch(array $records)
+    public function handleBatch(array $records): void
     {
         try {
-            return $this->getHandler()->handleBatch($records);
+            $this->getHandler()->handleBatch($records);
         } catch (\Exception $e) {
-            return false;
+            return ;
         }
     }
 
@@ -139,5 +139,10 @@ class ExceptionCatch implements HandlerInterface
         try {
             return call_user_func_array(array($this->getHandler(), $method), $arguments);
         } catch (\Exception $e) {}
+    }
+
+    public function close(): void
+    {
+        // do nothing
     }
 }
